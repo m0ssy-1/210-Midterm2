@@ -1,3 +1,4 @@
+#include "DoublyLinkedList.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -18,13 +19,29 @@ vector<string> loadNames(const string& filename) {
     return names;
 }
 
+string getRandomName(const vector<string>& names) {
+    int index = rand() % names.size();
+    return names[index];
+}
+
 int main() {
     srand(time(0)); //seeds RNG
 
     vector<string> names = loadNames("names.txt");
 
-    cout << "Total Names: " << names.size() << endl;
-    cout << "Test name: " << names[rand() % names.size()] << endl;
+    DoublyLinkedList line;
+
+    cout << "Store opens: " << endl;
+
+    //add the 5 customers
+    for (int i = 0; i < 5; ++i) {
+        string customer = getRandomName(names);
+        cout << customer << " something " << endl;
+        line.push_back(customer);
+    }
+
+    cout << " something " << endl;
+    line.print();
 
     return 0;
 }
