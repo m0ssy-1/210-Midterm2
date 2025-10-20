@@ -28,7 +28,6 @@ int main() {
     srand(time(0)); //seeds RNG
 
     vector<string> names = loadNames("names.txt");
-
     DoublyLinkedList line;
 
     cout << "Store opens: " << endl;
@@ -36,12 +35,24 @@ int main() {
     //add the 5 customers
     for (int i = 0; i < 5; ++i) {
         string customer = getRandomName(names);
-        cout << customer << " something " << endl;
+        cout << customer << " joins the line" << endl;
         line.push_back(customer);
     }
 
     cout << " something " << endl;
     line.print();
+    cout << endl;
+
+    auto maybeServeFront = [&] (DoublyLinkedList& line) {
+        //roll RNG 1-100
+        int prob = rand() % 100 + 1;
+        //40% RNG
+        if (prob <= 40) {
+            cout << " something " << endl;
+            line.pop_front(); //kills front
+        }
+    };
+
 
     return 0;
 }
