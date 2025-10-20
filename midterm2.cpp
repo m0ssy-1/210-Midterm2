@@ -35,11 +35,11 @@ int main() {
     //add the 5 customers
     for (int i = 0; i < 5; ++i) {
         string customer = getRandomName(names);
-        cout << customer << " joins the line" << endl;
+        cout << "   " << customer << " joins the line" << endl;
         line.push_back(customer);
     }
 
-    cout << " something " << endl;
+    cout << "Resulting line: " << endl;
     line.print();
     cout << endl;
 
@@ -48,11 +48,18 @@ int main() {
         int prob = rand() % 100 + 1;
         //40% RNG
         if (prob <= 40) {
-            cout << " something " << endl;
+            cout << "The customer at the front is served." << endl;
             line.pop_front(); //kills front
         }
     };
 
+    for (int t = 2; t <= 20; ++t) {
+        cout << "Time step #" << t << ":" << endl;
+        maybeServeFront(line);
+        cout << "Resulting line:" << endl;
+        line.print();
+        cout << endl;
+    }
 
     return 0;
 }
