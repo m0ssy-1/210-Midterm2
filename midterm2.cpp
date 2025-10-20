@@ -48,10 +48,24 @@ int main() {
         int prob = rand() % 100 + 1;
         //40% RNG
         if (prob <= 40) {
-            cout << "The customer at the front is served." << endl;
-            line.pop_front(); //kills front
+            string served = line.peek_front();
+            if (!served.empty()) {
+                cout<< "    " << served << " is served." << endl;
+                line.pop_front();
+            }
         }
     };
+
+    auto maybeNewCustomer = [&] (DoublyLinkedList& line) {
+        int prob = rand() % 100 + 1;
+        if (prob <= 60) {
+            string name = getRandomName(names);
+            cout << "   " << name << " joins the line." << endl;
+            line.push_back(name);
+        }
+    };
+
+
 
     for (int t = 2; t <= 20; ++t) {
         cout << "Time step #" << t << ":" << endl;

@@ -149,6 +149,12 @@ public:
         delete temp;
     }
 
+    string peek_front() {
+        if (!head) return "";
+        return head->data;
+    }
+
+
     ~DoublyLinkedList() {
         while (head) {
             Node* temp = head;
