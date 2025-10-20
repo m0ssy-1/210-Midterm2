@@ -78,9 +78,9 @@ int main() {
         if (prob <= 10) {
             int pos = rand() % 5 + 1;
             cout << "    A random customer leaves the line." << endl;
-        
+            line.delete_pos(pos);
         }
-    }
+    };
 
     auto maybeVIP = [&] (DoublyLinkedList& line) {
         int prob = rand() % 100 + 1;
@@ -97,8 +97,11 @@ int main() {
         maybeServeFront(line);
         maybeNewCustomer(line);
         maybeRearLeaves(line);
+        maybeRandomLeaves(line);
+        maybeVIP(line);
         
         cout << "Resulting line:" << endl;
+        cout << "   ";
         line.print();
         cout << endl;
     }
