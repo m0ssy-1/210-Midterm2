@@ -60,7 +60,7 @@ int main() {
         int prob = rand() % 100 + 1;
         if (prob <= 60) {
             string name = getRandomName(names);
-            cout << "   " << name << " joins the line." << endl;
+            cout << "    " << name << " joins the line." << endl;
             line.push_back(name);
         }
     };
@@ -68,7 +68,7 @@ int main() {
     auto maybeRearLeaves = [&](DoublyLinkedList& line) {
         int prob = rand() % 100 + 1;
         if (prob <= 20) {
-            cout << "   The rear customer leaves the line." <<endl;
+            cout << "    The rear customer leaves the line." <<endl;
             line.pop_back();
         }
     };
@@ -86,7 +86,7 @@ int main() {
         int prob = rand() % 100 + 1;
         if (prob <= 10) {
             string VIP = getRandomName(names);
-            cout << "   " << VIP << " (VIP) joins the front of the line!" << endl;
+            cout << "    " << VIP << " (VIP) joins the front of the line!" << endl;
             line.push_front(VIP);
         }
     };
@@ -101,7 +101,7 @@ int main() {
         maybeVIP(line);
         
         cout << "Resulting line:" << endl;
-        cout << "   ";
+        cout << "    ";
         line.print();
         cout << endl;
     }
