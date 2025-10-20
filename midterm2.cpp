@@ -65,11 +65,39 @@ int main() {
         }
     };
 
+    auto maybeRearLeaves = [&](DoublyLinkedList& line) {
+        int prob = rand() % 100 + 1;
+        if (prob <= 20) {
+            cout << "   The rear customer leaves the line." <<endl;
+            line.pop_back();
+        }
+    };
+
+    auto maybeRandomLeaves = [&](DoublyLinkedList& line) {
+        int prob = rand() % 100 + 1;
+        if (prob <= 10) {
+            int pos = rand() % 5 + 1;
+            cout << "    A random customer leaves the line." << endl;
+        
+        }
+    }
+
+    auto maybeVIP = [&] (DoublyLinkedList& line) {
+        int prob = rand() % 100 + 1;
+        if (prob <= 10) {
+            string VIP = getRandomName(names);
+            cout << "   " << VIP << " (VIP) joins the front of the line!" << endl;
+            line.push_front(VIP);
+        }
+    };
 
 
     for (int t = 2; t <= 20; ++t) {
         cout << "Time step #" << t << ":" << endl;
         maybeServeFront(line);
+        maybeNewCustomer(line);
+        maybeRearLeaves(line);
+        
         cout << "Resulting line:" << endl;
         line.print();
         cout << endl;
